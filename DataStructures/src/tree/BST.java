@@ -1,5 +1,6 @@
 package tree;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class BST<T extends Comparable<T>> {
@@ -67,7 +68,7 @@ public class BST<T extends Comparable<T>> {
 			x = c < 0 ? x.left : x.right;
 		}
 		if (x == null) {
-			throw new IllegalArgumentException();
+			throw new NoSuchElementException();
 		}
 
 		size--;
@@ -98,5 +99,19 @@ public class BST<T extends Comparable<T>> {
 		} else {
 			p.left = tmp;
 		} 
+	}
+	
+	public ArrayList<T> sort() {
+		ArrayList<T> result= new ArrayList<T>(size);
+		inorder(root, result);
+		return result;
+	}
+
+	private static <T extends Comparable<T>>
+	void inorder(BSTNode<T> root, ArrayList<T> list) {
+		if (root == null) { return; }
+		inorder(root.left, list);
+		list.add(root.data);
+		inorder(root.right, list);
 	}
 }

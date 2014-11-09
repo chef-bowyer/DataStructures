@@ -43,8 +43,8 @@ public class BSTApp {
 	public static void loadCountries() 
 	throws IOException {
 		countries = new BST<Country>();
-		BufferedReader br = new BufferedReader(new FileReader("src/tree/world_pop.txt"));
-
+		BufferedReader br = new BufferedReader(
+				new FileReader("world_pop.txt"));
 		
 		// first line is number of countries
 		int n = Integer.parseInt(br.readLine());
